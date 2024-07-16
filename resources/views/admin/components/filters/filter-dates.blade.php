@@ -1,0 +1,1 @@
+<input type="text" id="inputCeatedAt" name="dates" placeholder="MM-DD-YYYY - MM-DD-YYYY" autocomplete='off' class="form-control js_select_m_d_y js_select_date_created">

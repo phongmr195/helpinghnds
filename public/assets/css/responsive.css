@@ -1,0 +1,33 @@
+
+@media (min-width: 768px) {
+    .container-fluid{
+        position: relative;
+    }
+    
+    ol.breadcrumb {
+        position: absolute;
+        right: 7.5px;
+        top: 0;
+        min-height: 34px;
+        line-height: 34px !important;
+    }
+
+    .dataTables_wrapper{
+        position: relative !important;
+    }
+
+    .dataTables_wrapper .dt-buttons.btn-group{
+        position: absolute !important;
+        right: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .mt-mb-15 {
+        margin-top: 15px;
+    }
+
+    .div-scroll {
+        height: auto !important;
+    }
+}

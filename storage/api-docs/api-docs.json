@@ -1,0 +1,524 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation Api For Helpinghnds App ",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "vdphong1995@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://local.helpinghnds.com",
+            "description": "Demo Local"
+        }
+    ],
+    "paths": {
+        "/api/v1/users/user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user detail",
+                "description": "Get user detail",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/list-location": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get top 20 location for user",
+                "description": "Get top 20 location for user",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/workers": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get worker for user client",
+                "description": "Get user worker for cline",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "latitude",
+                                    "longtitude"
+                                ],
+                                "properties": {
+                                    "latitude": {
+                                        "type": "string",
+                                        "example": "10.77624100"
+                                    },
+                                    "longtitude": {
+                                        "type": "string",
+                                        "example": "106.639244"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/send-otp": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get OTP",
+                "description": "Get OTP",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "recaptcha_token",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+84123456789"
+                                    },
+                                    "recaptcha_token": {
+                                        "type": "string",
+                                        "example": "AIzaSyDwmeqwijVzJS04VIHw5v2wMEisY2qzdmMAIzaSyDwmeqwijVzJS04VIHw5v2wMEisY2qzdmM"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "The given data was invalid."
+                    }
+                }
+            }
+        },
+        "/api/v1/users/verify-otp": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Verify OTP",
+                "description": "Verify OTP",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "recaptcha_token",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+84123456789"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "AIzaSyDwmeqwijVzJS04VIHw5v2wMEisY2qzdmMAIzaSyDwmeqwijVzJS04VIHw5v2wMEisY2qzdmM"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "The given data was invalid."
+                    }
+                }
+            }
+        },
+        "/api/v1/users/signup/user": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Signup user client",
+                "description": "Register Client",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "password",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Jon"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Smith"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+84123456789"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "The given data was invalid."
+                    }
+                }
+            }
+        },
+        "/api/v1/users/signup/worker": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Signup user worker",
+                "description": "Register Worker",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "password",
+                                    "phone",
+                                    "address",
+                                    "gender",
+                                    "number_id",
+                                    "type_number_id",
+                                    "img_id_before",
+                                    "img_id_after"
+                                ],
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Jon"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Smith"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+84123456789"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "168 Khuong viet, Q.Tan Phu, P.Phu Trung"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "f"
+                                    },
+                                    "number_id": {
+                                        "type": "number",
+                                        "example": "251039383"
+                                    },
+                                    "type_number_id": {
+                                        "type": "number",
+                                        "example": "1(cmnd),2(cccd),3(GPLX)"
+                                    },
+                                    "img_id_before": {
+                                        "type": "string",
+                                        "example": "base 64 encode image"
+                                    },
+                                    "img_id_after": {
+                                        "type": "string",
+                                        "example": "base 64 encode image"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "The given data was invalid."
+                    }
+                }
+            }
+        },
+        "/api/v1/users/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login",
+                "description": "User login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "password",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+84123456789"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated!"
+                    },
+                    "422": {
+                        "description": "The given data was invalid."
+                    }
+                }
+            }
+        },
+        "/api/v1/users/user/update-location": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update location for user",
+                "description": "Update location of user",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "latitude",
+                                    "longtitude"
+                                ],
+                                "properties": {
+                                    "latitude": {
+                                        "type": "string",
+                                        "example": "10.77624100"
+                                    },
+                                    "longtitude": {
+                                        "type": "string",
+                                        "example": "106.639244"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/countries": {
+            "get": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "List countries",
+                "description": "Get list countries",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/list": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "List services",
+                "description": "Get list services",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/1/status": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get status for order",
+                "description": "Get status for order",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "bearer",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://local.helpinghnds.com/oauth/authorize",
+                        "tokenUrl": "http://local.helpinghnds.com/oauth/token",
+                        "refreshUrl": "http://local.helpinghnds.com/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

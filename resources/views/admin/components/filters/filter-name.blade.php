@@ -1,0 +1,1 @@
+<input type="text" class="form-control" name="name" placeholder="Enter fullname" value="{{!empty(request()->name) ? request()->name : ''}}">
